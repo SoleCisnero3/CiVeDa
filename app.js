@@ -20,7 +20,7 @@ app.get('/servicios', (req, res) => {
 app.use((req, res, next) => {
   res.status(404).render("404", {
     titulo: "Error 404",
-    descripcion: "nombre de mi pagina"
+    descripcion: "nombre de mipagina"
   })
 })
 
