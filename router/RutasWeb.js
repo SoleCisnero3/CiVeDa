@@ -8,6 +8,6 @@ router.get('/', (req, res) => {
   router.get('/servicios', (req, res) => {
     res.render("servicios", {tituloServicios: "Este es un mensaje dinamico desde servicios"})
   });
-  
+
 
   module.exports = router;
