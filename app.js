@@ -1,15 +1,18 @@
 const express = require('express');
-
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser') 
 const app = express();
 
 //parse applicatioX-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false}))
 // parse application/json
-app.use(bodyParser.json);
+app.use(bodyParser.json())
+
+
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
+
+require('dotenv').config();
 
 //Coneccion a base de datos
 const mongoose = require ('mongoose');
