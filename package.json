@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "cowsay": "^1.6.0",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
