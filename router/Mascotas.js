@@ -52,10 +52,10 @@ router.post('/', async(req, res) => {
 
 //modificamos mascotas
 router.get('/:id', async(req, res) => {
-  const _id = req.params.id
+  const id = req.params.id
 
   try {
-    const mascotaDB = await Mascota.findOne()
+    const mascotaDB = await Mascota.findOne({_id:id})
     console.log(mascotaDB)
 
     res.render('detalle', {
@@ -67,10 +67,62 @@ router.get('/:id', async(req, res) => {
     console.log(error)
     res.render('detalle', {
       error: true,
-      meensaje: 'No se encuentra el id seleccionado'
+      mensaje: 'No se encuentra el id seleccionado'
     })
   }
 })
 
+//eliminar mascota
+router.delete('/:id', async(req, res) => {
+    const id = req.params.id
 
+    try {
+      const mascotaDB = await Mascota.findByIdAndDelete({_id: id})
+
+      if (mascotaDB) {
+        res.json({
+          estado: true,
+          mensaje: 'Eliminado!'
+        })
+
+        
+      } else {
+        res.json({
+          estado: false,
+          mensaje: 'Fallo eliminar!'
+        })
+      }
+      
+    } catch (error) {
+      
+    }
+
+
+})
   module.exports = router;
+
+
+  router.put('/:id', async(req, res) => {
+    const id = req.params.id
+    const body = req.body
+
+    try {
+      
+      const mascotaDB = await Mascota.findOneAndUpdate(id, body, {useFindAndModify: false})
+      console.log(mascotaDB)
+
+      res.json({
+        estado: false,
+        mensaje: 'Editado'
+      })
+
+    } catch (error) {
+       console.log(error)
+
+       res.json({
+        estado: false,
+        mensaje: 'Fallo editar!'
+      })
+      
+    }
+  })
