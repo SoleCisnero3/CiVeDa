@@ -15,16 +15,16 @@
             <form id="formularioEditar" data-id="<%= mascota.id %>">
                 <input 
                     type="text"
+                    value="<%= mascota.nombre %>"
                     class="form-control my-2"
                     name="nombre"
-                    value="<%= mascota.nombre %>"
                     id="nombreInput"
                 >
                 <input 
                     type="text"
+                    value="<%= mascota.descripcion %>"
                     class="form-control my-2"
                     name="descripcion"
-                    value="<%= mascota.descripcion %>"
                     id="descripcionInput"
                 >
                 <button
@@ -44,12 +44,13 @@
             >
                  Eliminar
              </button>
+            <% } %>
     </div>
    
 <%- include("template/footer") %>
 
 <script>
-
+    //ELIMINAR
     const btnEliminar = document.querySelector('#btnEliminar')
 
     btnEliminar.addEventListener('click', async() => {
@@ -75,18 +76,20 @@
         }
     })
 
-const formularioEditar = document.querySelector('#formularioEditar')
+//EDITAR
+
+const formularioEditar = document.querySelector('#editar');
+
 formularioEditar.addEventListener('submit', async(e) => {
     e.preventDefault()
     
-   //const nombre = formularioEditar.element['nombre'].value
-   const nombre = document.querySelector('#nombreInput')
-   const descripcion = document.querySelector('#descripcionInput')
+   const nombre = document.querySelector('#nombreInput').value;
+   const descripcion = document.querySelector('#descripcionInput').value;
    const id = formularioEditar.dataset.id
 
    try {
     const data = await fetch(`/mascota/${id}`,{
-        method: 'put',
+        method: 'PUT',
         headers:{
             'Content-Type': 'application/json'
         },
@@ -94,15 +97,16 @@ formularioEditar.addEventListener('submit', async(e) => {
     })
 
     const res = await data.json()
-    console.log(res)
+ 
+    
     if (res.estado) {
         window.location.href = '/mascotas'
                 
-    } else {
+    }else{
              console.log(res)
                 
         }
-        
+
    } catch (error) {
     console.log(error)
    }
