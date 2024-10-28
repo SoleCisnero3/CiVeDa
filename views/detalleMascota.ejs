@@ -15,16 +15,16 @@
             <form id="formularioEditar" data-id="<%= mascota.id %>">
                 <input 
                     type="text"
-                    value="<%= mascota.nombre %>"
                     class="form-control my-2"
                     name="nombre"
+                    value="<%= mascota.nombre %>"
                     id="nombreInput"
                 >
                 <input 
                     type="text"
-                    value="<%= mascota.descripcion %>"
                     class="form-control my-2"
                     name="descripcion"
+                    value="<%= mascota.descripcion %>"
                     id="descripcionInput"
                 >
                 <button
@@ -50,7 +50,7 @@
 <%- include("template/footer") %>
 
 <script>
-    //ELIMINAR
+
     const btnEliminar = document.querySelector('#btnEliminar')
 
     btnEliminar.addEventListener('click', async() => {
@@ -75,26 +75,26 @@
             
         }
     })
-
 //EDITAR
 
-const formularioEditar = document.querySelector('#editar');
+
+    const formularioEditar = document.querySelector('#formularioEditar');
 
 formularioEditar.addEventListener('submit', async(e) => {
     e.preventDefault()
     
-   const nombre = document.querySelector('#nombreInput').value;
-   const descripcion = document.querySelector('#descripcionInput').value;
-   const id = formularioEditar.dataset.id
+    const nombre = document.querySelector('#nombreInput').value;
+    const descripcion = document.querySelector('#descripcionInput').value;
+    const id = formularioEditar.dataset.id
 
    try {
-    const data = await fetch(`/mascota/${id}`,{
+    const data = await fetch(`/mascotas/${id}`,{
         method: 'PUT',
         headers:{
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({nombre, descripcion})
-    })
+    });
 
     const res = await data.json()
  
@@ -102,7 +102,7 @@ formularioEditar.addEventListener('submit', async(e) => {
     if (res.estado) {
         window.location.href = '/mascotas'
                 
-    }else{
+    } else {
              console.log(res)
                 
         }
