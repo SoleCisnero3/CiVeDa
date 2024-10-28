@@ -1,0 +1,44 @@
+<%- include("template/cabecera", {tituloWeb: "Agendar Turno"}) %>
+
+<div class="container">
+    <h1>Agendar Turno</h1>
+    <form action="/turnos" method="POST">
+        <div class="mb-3">
+            <label for="nombreMascota" class="form-label">Nombre de la Mascota</label>
+            <input type="text" class="form-control" id="nombreMascota" name="nombreMascota" required>
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha del Turno</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" required>
+        </div>
+        <div class="mb-3">
+            <label for="hora" class="form-label">Hora del Turno</label>
+            <input type="time" class="form-control" id="hora" name="hora" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agendar Turno</button>
+    </form>
+</div>
+
+<%- include("template/footer") %>
+<%- include("template/cabecera", {tituloWeb: "Agendar Turno"}) %>
+
+<div class="container">
+    <h1>Agendar Turno</h1>
+    <form action="/turnos" method="POST">
+        <div class="mb-3">
+            <label for="nombreMascota" class="form-label">Nombre de la Mascota</label>
+            <input type="text" class="form-control" id="nombreMascota" name="nombreMascota" required>
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha del Turno</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" required>
+        </div>
+        <div class="mb-3">
+            <label for="hora" class="form-label">Hora del Turno</label>
+            <input type="time" class="form-control" id="hora" name="hora" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Agendar Turno</button>
+    </form>
+</div>
+
+<%- include("template/footer") %>

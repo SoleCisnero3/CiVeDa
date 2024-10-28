@@ -58,14 +58,14 @@ router.get('/:id', async(req, res) => {
     const mascotaDB = await Mascota.findOne({_id:id})
     console.log(mascotaDB)
 
-    res.render('detalle', {
+    res.render('detalleMascota', {
       mascota: mascotaDB,
       error: false
     })
 
   } catch (error) {
     console.log(error)
-    res.render('detalle', {
+    res.render('detalleMascota', {
       error: true,
       mensaje: 'No se encuentra el id seleccionado'
     })
@@ -100,7 +100,7 @@ router.delete('/:id', async(req, res) => {
 
 })
  
-//Editar 
+
 
 router.put('/:id', async (req, res) => {
   const id = req.params.id;
