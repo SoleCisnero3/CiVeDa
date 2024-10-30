@@ -51,30 +51,28 @@
 
 <script>
 
-    const btnEliminar = document.querySelector('#btnEliminar')
-
-    btnEliminar.addEventListener('click', async() => {
-        console.log('Me diste click')
-        const id = btnEliminar.dataset.id
-        console.log('id', id)
-        try {
-            const data = await fetch(`/mascotas/${id}`,{
-                method: 'delete'
-            })
-            const res = await data.json()
-
-            if (res.estado) {
-                window.location.href = '/mascotas'
-                
-            } else {
-                console.log(res)
-                
+document.addEventListener("DOMContentLoaded", function() {
+    const btnEliminar = document.querySelector('#btnEliminar');
+    if (btnEliminar) { // Verifica que el elemento exista
+        btnEliminar.addEventListener('click', async () => {
+            console.log('Me haces clic');
+            const id = btnEliminar.dataset.id;
+            console.log('id', id);
+            try {
+                const datos = await fetch(`/mascotas/${id}`, { method: 'DELETE' });
+                const res = await datos.json();
+                if (res.estado) {
+                    window.location.href = '/mascotas';
+                } else {
+                    console.log(res);
+                }
+            } catch (error) {
+                console.log(error);
             }
-        } catch (error) {
-            console.log(error)
-            
-        }
-    })
+        });
+    }
+});
+
 //EDITAR
 
 
