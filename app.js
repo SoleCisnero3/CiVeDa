@@ -36,7 +36,7 @@ app.set('views', __dirname + '/views');//aca le decimos donde van a estar esas p
 app.use(express.static(__dirname + "/public"));
 
 //Rutas web
-app.use('/', require('./router/RutasWeb'));
+app.use('/', require('./router/index.routes'));
 app.use('/mascotas', require('./router/Mascotas'));
 
 app.use((req, res, next) => {
